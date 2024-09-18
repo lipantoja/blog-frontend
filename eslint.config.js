@@ -33,6 +33,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      "react/prop-types":"off" // "Hey, I don't want that linter issue" 28:08 22 Intro to React
     },
   },
 ]

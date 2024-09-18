@@ -1,35 +1,80 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+function Header () {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <header>
+      <a href="#">Home</a> | <a href="#posts-index">All posts</a> | <a href="#posts-new">New post</a>
+    </header>
   )
 }
 
-export default App
+function PostsNew() {
+  return (
+    <div id="posts-new">
+    <h1>New post</h1>
+    <form>
+      {/* Title Input */}
+      <label htmlFor="title">Our First Blog</label><br />
+      <input type="text" id="title" name="title" required /><br /><br />
+
+      {/* Body Input */}
+      <label htmlFor="body">Body:</label><br />
+      <textarea id="body" name="body" rows="5" required></textarea><br /><br />
+
+      {/* Image Input */}
+      <label htmlFor="image">Upload an image:</label><br />
+      <input type="file" id="image" name="image" accept="image/*" /><br /><br />
+
+    </form>
+  </div>
+  )
+}
+
+function PostsIndex() {
+  return (
+    <div id="posts-index">
+    <h1>All posts</h1>
+
+    {/* Post 1 */}
+    <div className="">
+      <h2>Squirrel Post</h2>
+      <p>Squirrel is here</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Callosciurus_prevostii_2zz.jpg" alt="First post" />
+    </div>
+    <hr />
+
+    {/* Post 2 */}
+    <div className="post">
+      <h2>Panda Post</h2>
+      <p>This is red panda, how cute</p>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6tSZIcjrZcJWphbaCyUIXtyniziDtvQSrRg&s" alt="Second post" />
+    </div>
+    <hr />
+  </div>
+  )
+}
+
+function Footer() {
+  return (
+  <footer>
+    <p>Copyright 20XX</p>
+  </footer>
+  )
+}
+function App() {
+  return (
+    <div>
+      <Header />
+      <PostsPage />
+      <Footer />
+    </div>
+  );
+}
+function PostsPage (){
+  return(
+    <main>
+      <PostsNew />
+      <PostsIndex />
+    </main>
+  )
+}
+
+export default App;

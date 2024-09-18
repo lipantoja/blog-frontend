@@ -30,27 +30,20 @@ function PostsNew() {
 
 function PostsIndex(props) {
   console.log("The props are", props);
+  // <PostsIndex zoo={zoo} />
   return (
     <div id="posts-index">
       <h1>All posts</h1>
-      <p>The name is {props.name}</p>
-
-    {/* Post 1 */}
-    <div className="">
-      <h2>Squirrel Post</h2>
-      <p>Squirrel is here</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Callosciurus_prevostii_2zz.jpg" alt="First post" />
+        {/* <p>{props.firstName}</p> */}
+        {props.zoo.map(zoo => (
+          <div key={zoo.id} className="zoo">
+            <h2>{zoo.title}</h2>
+            <img src={zoo.image_url} alt="" />
+            <p>Chef: {zoo.chef}</p>
+            <button>More info</button>
+          </div>
+        ))}
     </div>
-    <hr />
-
-    {/* Post 2 */}
-    <div className="post">
-      <h2>Panda Post</h2>
-      <p>This is red panda, how cute</p>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6tSZIcjrZcJWphbaCyUIXtyniziDtvQSrRg&s" alt="Second post" />
-    </div>
-    <hr />
-  </div>
   )
 }
 
@@ -71,11 +64,26 @@ function App() {
   );
 }
 function PostsPage (){
-  let name = "Test";
+  let firstName = "Test";
+  let zoo = [
+    {
+      id: 1,
+      title: "Prevost Squirrel",
+      body: "This is a cool looking squirrel.",
+      image: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Callosciurus_prevostii_2zz.jpg",
+    },
+    {
+      id: 2,
+      title: "Red Panda",
+      body: "A panda that is red.",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6tSZIcjrZcJWphbaCyUIXtyniziDtvQSrRg&s",
+    },
+
+  ];
   return(
     <main>
       <PostsNew />
-      <PostsIndex name={name} />
+      <PostsIndex firstName={firstName} zoo={zoo} />
     </main>
   )
 }

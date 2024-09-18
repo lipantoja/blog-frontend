@@ -28,10 +28,12 @@ function PostsNew() {
   )
 }
 
-function PostsIndex() {
+function PostsIndex(props) {
+  console.log("The props are", props);
   return (
     <div id="posts-index">
-    <h1>All posts</h1>
+      <h1>All posts</h1>
+      <p>The name is {props.name}</p>
 
     {/* Post 1 */}
     <div className="">
@@ -69,10 +71,11 @@ function App() {
   );
 }
 function PostsPage (){
+  let name = "Test";
   return(
     <main>
       <PostsNew />
-      <PostsIndex />
+      <PostsIndex name={name} />
     </main>
   )
 }

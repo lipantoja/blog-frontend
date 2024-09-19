@@ -1,25 +1,28 @@
 import { PostsIndex } from './PostsIndex';
 import { PostsNew } from './PostsNew';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 export function PostsPage() {
   let firstName = "Laura";
-  let posts = [];
+  const [zoo, setZoo] = useState([]);
 
   const getZooData = () => {
     console.log('hello');
   }
-  
-  axios.get("http://localhost:3000/recipes.json").then(response => {
-    console.log(response);
-  })
 
+  axios.get("http://localhost:3000/posts.json").then(response => {
+    console.log(response.data);
+    setZoo(response.data);
+  })
+  useEffect(getZooData, []);
+  // useEffect(handleIndex []);
 
   return (
     <main>
       <PostsNew />
-      <PostsIndex firstName={firstName} zoo={posts} />
-      <button onClick={getZooData}>get the data</button>
+      <PostsIndex firstName={firstName} zoo={zoo} />
+      {/* <button onClick={getZooData}>get the data</button> */}
     </main>
   );
 }

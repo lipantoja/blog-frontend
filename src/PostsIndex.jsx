@@ -1,5 +1,5 @@
 export function PostsIndex(props) {
-  console.log("The props are", props);
+
   // <PostsIndex zoo={zoo} />
   return (
     <div id="posts-index">

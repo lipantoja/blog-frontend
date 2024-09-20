@@ -8,6 +8,8 @@ export function PostsPage() {
   let firstName = "Laura";
   const [zoo, setZoo] = useState([]);
   const [isZooShowVisible, setIsZooShowVisible] = useState(false);
+  const [currentZoo, setCurrentZoo] = useState({});
+
   const getZooData = () => {
     console.log('hello');
     axios.get("http://localhost:3000/posts.json").then(response => {
@@ -15,12 +17,14 @@ export function PostsPage() {
       setZoo(response.data);
     })
   }
-  const showModal = () => {
+  const showModal = (zoo) => {
     console.log('showing the modal');
+    console.log(zoo);
+    setCurrentZoo(zoo);
     setIsZooShowVisible(true);
   }
   const closeModal = () => {
-    console.log('closing modal');
+    // console.log('closing modal');
     setIsZooShowVisible(false);
   }
 
@@ -33,7 +37,11 @@ export function PostsPage() {
       <PostsNew />
       <PostsIndex firstName={firstName} zoo={zoo} onShow={showModal} />
       <Modal show={isZooShowVisible} onClose={closeModal}>
-        <p>TEST</p>
+        <div>
+          <p>title:{currentZoo.title}</p>
+          <p>body:{currentZoo.body}</p>
+          <p>image:{currentZoo.image}</p>
+        </div>
       </Modal>
     </main>
   );
